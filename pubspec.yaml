@@ -77,10 +77,10 @@ flutter:
   fonts:
     - family: Inter
       fonts:
-        - asset: fonts/Inter_Regular.ttf
-        - asset: fonts/Inter_Medium.ttf
-        - asset: fonts/Inter_ExtraBold.ttf
-        - asset: fonts/Inter_Bold.ttf
+        - asset: assets/fonts/Inter_Regular.ttf
+        - asset: assets/fonts/Inter_Medium.ttf
+        - asset: assets/fonts/Inter_ExtraBold.ttf
+        - asset: assets/fonts/Inter_Bold.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

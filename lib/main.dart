@@ -1,3 +1,5 @@
+import 'package:bmiapp/routes/app_route.dart';
+import 'package:bmiapp/screens/bmi_calculator_screen.dart';
 import 'package:bmiapp/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +11,6 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -17,7 +18,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const SplashScreen(),
+      // home: const SplashScreen(),
+      initialRoute: AppRoute.splashScreen,
+      routes: AppRoute().routes,
     );
   }
 }
