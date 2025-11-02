@@ -1,7 +1,17 @@
+import 'package:bmiapp/components/app_button.dart';
+import 'package:bmiapp/components/app_color.dart';
+import 'package:bmiapp/components/app_text.dart';
+import 'package:bmiapp/components/app_textstyle.dart';
 import 'package:bmiapp/routes/app_route.dart';
+import 'package:bmiapp/widget/age_and_weight_card_widget.dart';
+import 'package:bmiapp/widget/female_and_male_card_widget.dart';
+import 'package:bmiapp/widget/height_slider_widget.dart';
 import 'package:flutter/material.dart';
 
 ValueNotifier<int> age = ValueNotifier<int>(25);
+ValueNotifier<int> weight = ValueNotifier<int>(78);
+ValueNotifier<int> height = ValueNotifier<int>(175);
+ValueNotifier<bool> isFeMale = ValueNotifier<bool>(true);
 
 class BmiCalculatorScreen extends StatefulWidget {
   const BmiCalculatorScreen({super.key});
@@ -14,179 +24,39 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.lavenderMist,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("BmiCalculatorScreen"),
-          ValueListenableBuilder(
-            valueListenable: age,
-            builder: (context, value, child) {
-              return Column(
-                children: [
-                  Text(age.value.toString()),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          age.value--;
-                        },
-                        child: Icon(Icons.remove),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          age.value++;
-                        },
-                        child: Icon(Icons.add),
-                      ),
-                    ],
-                  ),
-                ],
-              );
-            },
+          SizedBox(height: 54),
+          AppText(
+            text: 'BMI CALCULATOR',
+            style: AppTextstyle.tsRegularMidnightBlue17,
           ),
-          TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, AppRoute.thirdScreen);
-              // Navigator.pop(context, 'BMI Calculated Successfully');
-            },
-            child: Text("Calculate"),
-          ),
-        ],
-      ),
-    );
-  }
-
-  // StatefulBuilder(
-  //   builder: (context, innerSetState) {
-  //     return Column(
-  //       children: [
-  //         Text(age.toString()),
-  //         Row(
-  //           mainAxisAlignment: MainAxisAlignment.center,
-  //           children: [
-  //             TextButton(
-  //               onPressed: () {
-  //                 innerSetState(() {
-  //                   age--;
-  //                 });
-  //               },
-  //               child: Icon(Icons.remove),
-  //             ),
-  //             TextButton(
-  //               onPressed: () {
-  //                 innerSetState(() {
-  //                   age++;
-  //                 });
-  //               },
-  //               child: Icon(Icons.add),
-  //             ),
-  //           ],
-  //         ),
-  //       ],
-  //     );
-  //   },
-  // ),
-}
-
-class Calculator extends StatefulWidget {
-  const Calculator({super.key});
-
-  @override
-  State<Calculator> createState() => _CalculatorState();
-}
-
-class _CalculatorState extends State<Calculator> {
-  int age = 25;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(age.toString()),
-        Row(
-          children: [
-            TextButton(
-              onPressed: () {
-                setState(() {
-                  age--;
-                });
-              },
-              child: Icon(Icons.remove),
-            ),
-            TextButton(
-              onPressed: () {
-                setState(() {
-                  age++;
-                });
-              },
-              child: Icon(Icons.add),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-class ThirdScreen extends StatelessWidget {
-  const ThirdScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text("ThirdScreen"),
-          ValueListenableBuilder(
-            valueListenable: age,
-            builder: (context, value, child) {
-              return Text("Age from BmiCalculatorScreen: ${age.value}");
-            },
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.pushReplacementNamed(context, AppRoute.fourScreen);
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => const FourScreen()),
-              // );
-            },
-            child: Text("Calculate"),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class FourScreen extends StatelessWidget {
-  const FourScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text("FourScreen"),
-          ValueListenableBuilder(
-            valueListenable: age,
-            builder: (context, value, child) {
-              return Text("Age from BmiCalculatorScreen: ${age.value}");
-            },
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.popUntil(
+          SizedBox(height: 39),
+          AgeAndWeightCardWidget(age: age.value, weight: weight.value),
+          SizedBox(height: 23),
+          HeightSliderWidget(height: height.value),
+          SizedBox(height: 23),
+          FemaleAndMaleCardWidget(),
+          SizedBox(height: 31),
+          AppButton(
+            buttonText: 'Calculate BMI',
+            onTap: () async {
+              await Navigator.pushNamed(
                 context,
-                ModalRoute.withName(AppRoute.splashScreen),
+                AppRoute.bmiResultsScreen,
+                arguments: {
+                  'weight': weight.value,
+                  'height': height.value,
+                },
               );
             },
-            child: Text("Calculate"),
+            colorbutton: AppColor.blueViolet,
+            tStyle: AppTextstyle.tsMediumWhite17,
           ),
         ],
       ),
     );
   }
 }
+

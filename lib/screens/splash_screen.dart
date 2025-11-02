@@ -5,7 +5,6 @@ import 'package:bmiapp/components/app_color.dart';
 import 'package:bmiapp/components/app_text.dart';
 import 'package:bmiapp/components/app_textstyle.dart';
 import 'package:bmiapp/routes/app_route.dart';
-import 'package:bmiapp/screens/bmi_calculator_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -60,13 +59,10 @@ class _SplashScreenState extends State<SplashScreen> {
           AppButton(
             buttonText: 'Get Started',
             onTap: () async {
-              final result = await Navigator.pushNamed(
+              await Navigator.pushNamed(
                 context,
-                AppRoute.bmiCalculatorScreen,
-                arguments: {'id': 1, 'name': 'BMI Result', 'isSplash': true},
+                AppRoute.bmiCalculatorScreenSetState,
               );
-
-              print("Result from BmiCalculatorScreen: $result");
             },
             colorbutton: AppColor.lavenderMist,
             tStyle: AppTextstyle.tsMediumMidnightBlue17,

@@ -1,6 +1,4 @@
 import 'package:bmiapp/routes/app_route.dart';
-import 'package:bmiapp/screens/bmi_calculator_screen.dart';
-import 'package:bmiapp/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
