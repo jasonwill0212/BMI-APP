@@ -7,16 +7,9 @@ import 'package:bmiapp/routes/app_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class BmiCalculatorScreenStatefulBuilder extends StatefulWidget {
+class BmiCalculatorScreenStatefulBuilder extends StatelessWidget {
   const BmiCalculatorScreenStatefulBuilder({super.key});
 
-  @override
-  State<BmiCalculatorScreenStatefulBuilder> createState() =>
-      _BmiCalculatorScreenStatefulBuilderState();
-}
-
-class _BmiCalculatorScreenStatefulBuilderState
-    extends State<BmiCalculatorScreenStatefulBuilder> {
   @override
   Widget build(BuildContext context) {
     int weight = 78;
@@ -263,10 +256,6 @@ class HeightCard extends StatelessWidget {
   }
 }
 
-
-
-
-
 //Male And Female Card
 
 class MaleAndFemaleCard extends StatelessWidget {
@@ -279,54 +268,48 @@ class MaleAndFemaleCard extends StatelessWidget {
     final screenWidth = screenSize.width;
     bool isFemale = true;
     return Container(
-            width: screenWidth - 60,
-            height: (135 / 852) * screenHeight,
-            decoration: BoxDecoration(
-              color: AppColor.white,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Column(
-              children: [
-                SizedBox(height: 25),
-                AppText(
-                  text: 'Gender',
-                  style: AppTextstyle.tsRegularMidnightBlue17,
-                ),
-                SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AppText(
-                      text: 'Male',
-                      style: AppTextstyle.tsRegularDarkindigo17,
-                    ),
-                    SizedBox(width: 45),
-                    StatefulBuilder(
-                      builder: (BuildContext context, StateSetter setState) {
-                        return Switch(
-                          activeThumbColor: AppColor.blueViolet,
-                          activeTrackColor: AppColor.lavenderMist,
-                          inactiveThumbColor: AppColor.blueViolet,
-                          inactiveTrackColor: AppColor.lavenderMist,
-                          value: isFemale,
-                          onChanged: (newisFemale) {
-                            setState(() {
-                              isFemale = newisFemale;
-                            });
-                          },
-                        );
-                      },
-                    ),
-                    SizedBox(width: 45),
+      width: screenWidth - 60,
+      height: (135 / 852) * screenHeight,
+      decoration: BoxDecoration(
+        color: AppColor.white,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        children: [
+          SizedBox(height: 25),
+          AppText(text: 'Gender', style: AppTextstyle.tsRegularMidnightBlue17),
+          SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AppText(text: 'Male', style: AppTextstyle.tsRegularDarkindigo17),
+              SizedBox(width: 45),
+              StatefulBuilder(
+                builder: (BuildContext context, StateSetter setState) {
+                  return Switch(
+                    activeThumbColor: AppColor.blueViolet,
+                    activeTrackColor: AppColor.lavenderMist,
+                    inactiveThumbColor: AppColor.blueViolet,
+                    inactiveTrackColor: AppColor.lavenderMist,
+                    value: isFemale,
+                    onChanged: (newisFemale) {
+                      setState(() {
+                        isFemale = newisFemale;
+                      });
+                    },
+                  );
+                },
+              ),
+              SizedBox(width: 45),
 
-                    AppText(
-                      text: 'Female',
-                      style: AppTextstyle.tsRegularDarkindigo17,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          );
+              AppText(
+                text: 'Female',
+                style: AppTextstyle.tsRegularDarkindigo17,
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }

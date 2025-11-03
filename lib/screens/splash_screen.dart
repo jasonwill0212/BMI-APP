@@ -7,14 +7,9 @@ import 'package:bmiapp/components/app_textstyle.dart';
 import 'package:bmiapp/routes/app_route.dart';
 import 'package:flutter/material.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
-  @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,10 +54,7 @@ class _SplashScreenState extends State<SplashScreen> {
           AppButton(
             buttonText: 'Get Started',
             onTap: () async {
-              await Navigator.pushNamed(
-                context,
-                AppRoute.bmiCalculatorScreenSetState,
-              );
+              await Navigator.pushNamed(context, AppRoute.bmiCalculatorScreen);
             },
             colorbutton: AppColor.lavenderMist,
             tStyle: AppTextstyle.tsMediumMidnightBlue17,

@@ -32,21 +32,14 @@ class _BmiCalculatorScreenSetStateState
             style: AppTextstyle.tsRegularMidnightBlue17,
           ),
           const SizedBox(height: 39),
-          AgeAndWeghtCard(
-            weight: weight,
-            onWeightChanged: (newWeight) {
-              setState(() {
-                weight = newWeight;
-              });
-            },
-          ),
+          AgeAndWeghtCard(weight: weight, onWeightChanged: (newWeight){
+            weight = newWeight;
+          }),
           const SizedBox(height: 23),
           HeightCard(
             height: height,
             onHeightChanged: (newHeight) {
-              setState(() {
-                height = newHeight;
-              });
+              height = newHeight;
             },
           ),
           const SizedBox(height: 23),
@@ -69,6 +62,9 @@ class _BmiCalculatorScreenSetStateState
     );
   }
 }
+
+
+//age And Weight
 
 class AgeAndWeghtCard extends StatefulWidget {
   final int weight;
@@ -195,6 +191,9 @@ class _AgeAndWeghtCardState extends State<AgeAndWeghtCard> {
   }
 }
 
+
+//HeightCard
+
 class HeightCard extends StatefulWidget {
   final int height;
   final ValueChanged<int> onHeightChanged;
@@ -280,7 +279,8 @@ class _HeightCardState extends State<HeightCard> {
     );
   }
 }
-
+ 
+//Male And Female
 class MaleAndFemaleCard extends StatefulWidget {
   const MaleAndFemaleCard({super.key});
 

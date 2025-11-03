@@ -13,14 +13,9 @@ ValueNotifier<int> weight = ValueNotifier<int>(78);
 ValueNotifier<int> height = ValueNotifier<int>(175);
 ValueNotifier<bool> isFeMale = ValueNotifier<bool>(true);
 
-class BmiCalculatorScreen extends StatefulWidget {
+class BmiCalculatorScreen extends StatelessWidget {
   const BmiCalculatorScreen({super.key});
 
-  @override
-  State<BmiCalculatorScreen> createState() => _BmiCalculatorScreenState();
-}
-
-class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,9 +28,9 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
             style: AppTextstyle.tsRegularMidnightBlue17,
           ),
           SizedBox(height: 39),
-          AgeAndWeightCardWidget(age: age.value, weight: weight.value),
+          AgeAndWeightCardWidget(age: age, weight: weight),
           SizedBox(height: 23),
-          HeightSliderWidget(height: height.value),
+          HeightSliderWidget(height: height),
           SizedBox(height: 23),
           FemaleAndMaleCardWidget(),
           SizedBox(height: 31),
@@ -45,10 +40,7 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
               await Navigator.pushNamed(
                 context,
                 AppRoute.bmiResultsScreen,
-                arguments: {
-                  'weight': weight.value,
-                  'height': height.value,
-                },
+                arguments: {'weight': weight.value, 'height': height.value},
               );
             },
             colorbutton: AppColor.blueViolet,
@@ -59,4 +51,3 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
     );
   }
 }
-

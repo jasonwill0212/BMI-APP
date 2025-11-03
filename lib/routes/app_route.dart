@@ -1,4 +1,4 @@
-import 'package:bmiapp/screens/bmiResultsScreen.dart';
+import 'package:bmiapp/screens/bmi_result_screen.dart';
 import 'package:bmiapp/screens/bmi_calculator_screen.dart';
 import 'package:bmiapp/screens/set_state/bmi_calculator_screen_set_state.dart';
 import 'package:bmiapp/screens/splash_screen.dart';

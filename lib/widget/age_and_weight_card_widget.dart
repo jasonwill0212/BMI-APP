@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class AgeAndWeightCardWidget extends StatelessWidget {
-  final int weight;
-  final int age;
+  final ValueNotifier<int> weight;
+  final ValueNotifier<int> age;
 
   const AgeAndWeightCardWidget({
     super.key,
@@ -20,8 +20,6 @@ class AgeAndWeightCardWidget extends StatelessWidget {
     final screenSize = MediaQuery.of(context).size;
     final screenHeight = screenSize.height;
     final screenWidth = screenSize.width;
-    ValueNotifier<int> age = ValueNotifier<int>(25);
-    ValueNotifier<int> weight = ValueNotifier<int>(78);
     return Row(
       children: [
         SizedBox(width: 30),
@@ -57,7 +55,9 @@ class AgeAndWeightCardWidget extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {
-                              age.value--;
+                              if (age.value > 1) {
+                                age.value--;
+                              }
                             },
                             child: SvgPicture.asset(
                               AppAssetsPath.icMinus,
@@ -118,7 +118,9 @@ class AgeAndWeightCardWidget extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {
-                              weight.value--;
+                              if (weight.value > 1) {
+                                weight.value--;
+                              }
                             },
                             child: SvgPicture.asset(
                               AppAssetsPath.icMinus,
