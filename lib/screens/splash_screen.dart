@@ -17,7 +17,7 @@ class SplashScreen extends StatelessWidget {
       body: Column(
         children: [
           SizedBox(height: 81),
-          Align(
+          Center(
             child: AppText(
               text: 'BMiDO',
               style: AppTextstyle.tsExtraBoldWhite30,
@@ -26,7 +26,6 @@ class SplashScreen extends StatelessWidget {
           SizedBox(height: 59),
           AppAssets(path: AppAssetsPath.imgPeopleAndBicycle),
           SizedBox(height: 95),
-
           Row(
             children: [
               SizedBox(width: 53),
@@ -53,8 +52,16 @@ class SplashScreen extends StatelessWidget {
           SizedBox(height: 38),
           AppButton(
             buttonText: 'Get Started',
-            onTap: () async {
-              await Navigator.pushNamed(context, AppRoute.bmiCalculatorScreen);
+            onTap: () {
+              // Navigator.pushNamed(context, AppRoute.bmiCalculatorScreen);
+              // Navigator.pushNamed(
+              //   context,
+              //   AppRoute.bmiCalculatorScreenSetState,
+              // );
+              Navigator.pushNamed(
+                context,
+                AppRoute.bmiCalculatorScreenStatefullBuilder,
+              );
             },
             colorbutton: AppColor.lavenderMist,
             tStyle: AppTextstyle.tsMediumMidnightBlue17,

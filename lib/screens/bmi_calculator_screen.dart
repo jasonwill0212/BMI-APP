@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 ValueNotifier<int> age = ValueNotifier<int>(25);
 ValueNotifier<int> weight = ValueNotifier<int>(78);
 ValueNotifier<int> height = ValueNotifier<int>(175);
-ValueNotifier<bool> isFeMale = ValueNotifier<bool>(true);
 
 class BmiCalculatorScreen extends StatelessWidget {
   const BmiCalculatorScreen({super.key});
@@ -28,16 +27,16 @@ class BmiCalculatorScreen extends StatelessWidget {
             style: AppTextstyle.tsRegularMidnightBlue17,
           ),
           SizedBox(height: 39),
-          AgeAndWeightCardWidget(age: age, weight: weight),
+          AgeAndWeightCardWidget(),
           SizedBox(height: 23),
-          HeightSliderWidget(height: height),
+          HeightSliderWidget(),
           SizedBox(height: 23),
           FemaleAndMaleCardWidget(),
           SizedBox(height: 31),
           AppButton(
             buttonText: 'Calculate BMI',
-            onTap: () async {
-              await Navigator.pushNamed(
+            onTap: () {
+              Navigator.pushNamed(
                 context,
                 AppRoute.bmiResultsScreen,
                 arguments: {'weight': weight.value, 'height': height.value},

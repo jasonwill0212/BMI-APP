@@ -1,11 +1,11 @@
 import 'package:bmiapp/components/app_color.dart';
 import 'package:bmiapp/components/app_text.dart';
 import 'package:bmiapp/components/app_textstyle.dart';
+import 'package:bmiapp/screens/bmi_calculator_screen.dart';
 import 'package:flutter/material.dart';
 
 class HeightSliderWidget extends StatelessWidget {
-  final ValueNotifier<int> height;
-  const HeightSliderWidget({super.key, required this.height});
+  const HeightSliderWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -52,24 +52,24 @@ class HeightSliderWidget extends StatelessWidget {
                       },
                     ),
                   ),
-                  SizedBox(height: 19),
-                  Row(
-                    children: [
-                      SizedBox(width: 28),
-                      AppText(
-                        text: '50 cm',
-                        style: AppTextstyle.tsRegularobsidianBlue12,
-                      ),
-                      SizedBox(width: 193),
-                      AppText(
-                        text: '300 cm',
-                        style: AppTextstyle.tsRegularobsidianBlue12,
-                      ),
-                    ],
-                  ),
                 ],
               );
             },
+          ),
+          SizedBox(height: 19),
+          Row(
+            children: [
+              SizedBox(width: 28),
+              AppText(
+                text: '50 cm',
+                style: AppTextstyle.tsRegularobsidianBlue12,
+              ),
+              SizedBox(width: 193),
+              AppText(
+                text: '300 cm',
+                style: AppTextstyle.tsRegularobsidianBlue12,
+              ),
+            ],
           ),
         ],
       ),

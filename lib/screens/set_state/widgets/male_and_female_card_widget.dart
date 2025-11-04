@@ -1,17 +1,25 @@
+//Male And Female
 import 'package:bmiapp/components/app_color.dart';
 import 'package:bmiapp/components/app_text.dart';
 import 'package:bmiapp/components/app_textstyle.dart';
 import 'package:flutter/material.dart';
 
-class FemaleAndMaleCardWidget extends StatelessWidget {
-  const FemaleAndMaleCardWidget({super.key});
+class MaleAndFemaleCard extends StatefulWidget {
+  const MaleAndFemaleCard({super.key});
+
+  @override
+  State<MaleAndFemaleCard> createState() => _MaleAndFemaleCardState();
+}
+
+class _MaleAndFemaleCardState extends State<MaleAndFemaleCard> {
+  bool isFemale = true;
 
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final screenHeight = screenSize.height;
     final screenWidth = screenSize.width;
-    ValueNotifier<bool> isFeMale = ValueNotifier<bool>(true);
+
     return Container(
       width: screenWidth - 60,
       height: (135 / 852) * screenHeight,
@@ -21,30 +29,27 @@ class FemaleAndMaleCardWidget extends StatelessWidget {
       ),
       child: Column(
         children: [
-          SizedBox(height: 25),
+          const SizedBox(height: 25),
           AppText(text: 'Gender', style: AppTextstyle.tsRegularMidnightBlue17),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(width: 45),
               AppText(text: 'Male', style: AppTextstyle.tsRegularDarkindigo17),
-              SizedBox(width: 51),
-              ValueListenableBuilder(
-                valueListenable: isFeMale,
-                builder: (context, value, child) {
-                  return Switch(
-                    activeThumbColor: AppColor.blueViolet,
-                    inactiveThumbColor: AppColor.lavenderBlue,
-                    activeTrackColor: AppColor.lavenderMist,
-                    inactiveTrackColor: AppColor.lavenderMist,
-                    value: value,
-                    onChanged: (newvalue) {
-                      isFeMale.value = newvalue;
-                    },
-                  );
+              const SizedBox(width: 45),
+              Switch(
+                activeThumbColor: AppColor.blueViolet,
+                activeTrackColor: AppColor.lavenderMist,
+                inactiveThumbColor: AppColor.blueViolet,
+                inactiveTrackColor: AppColor.lavenderMist,
+                value: isFemale,
+                onChanged: (newValue) {
+                  setState(() {
+                    isFemale = newValue;
+                  });
                 },
               ),
-              SizedBox(width: 42),
+              const SizedBox(width: 45),
               AppText(
                 text: 'Female',
                 style: AppTextstyle.tsRegularDarkindigo17,

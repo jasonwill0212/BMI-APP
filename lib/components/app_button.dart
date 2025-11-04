@@ -14,7 +14,7 @@ class AppButton extends StatelessWidget {
     required this.onTap,
     this.width,
     required this.colorbutton,
-    required this.tStyle
+    required this.tStyle,
   });
 
   @override
@@ -25,13 +25,12 @@ class AppButton extends StatelessWidget {
       child: Container(
         width: width ?? (size.width - 61),
         height: 75,
-
         decoration: BoxDecoration(
           color: colorbutton,
           borderRadius: BorderRadius.circular(62),
         ),
         alignment: Alignment.center,
-        child: AppText(text: buttonText,style:tStyle),
+        child: AppText(text: buttonText, style: tStyle),
       ),
     );
   }

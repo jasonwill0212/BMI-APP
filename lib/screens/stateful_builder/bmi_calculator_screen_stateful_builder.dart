@@ -24,7 +24,7 @@ class BmiCalculatorScreenStatefulBuilder extends StatelessWidget {
             style: AppTextstyle.tsRegularMidnightBlue17,
           ),
           SizedBox(height: 39),
-          AgeAndWeghtCard(weight: weight),
+          AgeAndWeightCard(weight: weight),
           SizedBox(height: 23),
           HeightCard(height: height),
           SizedBox(height: 23),
@@ -49,9 +49,9 @@ class BmiCalculatorScreenStatefulBuilder extends StatelessWidget {
 }
 
 //age and weight card
-class AgeAndWeghtCard extends StatelessWidget {
+class AgeAndWeightCard extends StatelessWidget {
   final int weight;
-  const AgeAndWeghtCard({super.key, required this.weight});
+  const AgeAndWeightCard({super.key, required this.weight});
 
   @override
   Widget build(BuildContext context) {
@@ -301,7 +301,6 @@ class MaleAndFemaleCard extends StatelessWidget {
                 },
               ),
               SizedBox(width: 45),
-
               AppText(
                 text: 'Female',
                 style: AppTextstyle.tsRegularDarkindigo17,

@@ -9,5 +9,4 @@ class AppColor {
   static const Color darkindigo = Color(0XFF2F2E41);
   static const Color gray = Color(0XFFCCCCCC);
   static const Color obsidianBlue = Color(0XFF060918);
-
 }
